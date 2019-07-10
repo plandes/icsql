@@ -5,7 +5,7 @@
 
 (depends-on "dash" "2.13.0")
 (depends-on "buffer-manage" "0.10")
-(depends-on "choice-program" "0.8")
+(depends-on "choice-program" "0.5")
 (depends-on "package-lint")
 
 (package-file "icsql.el")
