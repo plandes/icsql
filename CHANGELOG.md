@@ -8,9 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## Added
+- User input sends SQL to buffer via `buffer-manager` framework.
+
 
 ## [0.0.1] - 2019-07-09
-
 ### Added
 - Automatically download [ciSQL] jar file.
 - Changelog and contributing.

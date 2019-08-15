@@ -125,6 +125,9 @@ See `icsql-download-jar'."
   "List of products that have been populated.
 This is updated by `icsql-repopulate-sql-product-alist'.")
 
+(defvar icsql-send-input-history nil
+  "History variable for `icsql-send-input.")
+
 (defun icsql-jar-release-url ()
   "Return the URL to download the ciSQL uber jar."
   (format "https://github.com/plandes/cisql/releases/download/v%s/cisql.jar"
@@ -306,15 +309,6 @@ Model the ciSQL product after PRODUCT (ex: 'mysql)."
 	      default)))
     (setq icsql-last-read ui)))
 
-;;;###autoload
-(defun icsql-send-line ()
-  "Send the current line to the SQL process."
-  (interactive)
-  (let ((start (line-beginning-position))
-	(end (line-end-position)))
-    (sql-send-region start end)))
-
-
 
 (defclass icsql-entry (buffer-entry)
   ((conn-name :initarg :conn-name
@@ -369,7 +363,6 @@ An icSQL entry class that represents each SQL interactive buffer.")
     (oset this :last-conn-name name)
     (format "icsql-%s" name)))
 
-
 
 (defcustom icsql-manager-singleton
   (icsql-manager :object-name "icsql")
@@ -396,13 +389,36 @@ See `sql-set-sqli-buffer'."
   (interactive)
   (call-interactively 'icsql-new))
 
+;;;###autoload
+(defun icsql-send-line ()
+  "Send the current line to the SQL process."
+  (interactive)
+  (let ((start (line-beginning-position))
+	(end (line-end-position)))
+    (sql-send-region start end)))
+
+;;;###autoload
+(defun icsql-send-input (sql)
+  "Send SQL to the last visited icSQL buffer."
+  (interactive
+   (let ((inp (read-string "SQL (default last statement): " nil
+			   'icsql-send-input-history
+			   (car icsql-send-input-history))))
+     (when (= (length inp) 0)
+       (error "Invalid SQL"))
+     (list inp)))
+  (let ((entry (config-manager-entry icsql-manager-singleton 'first)))
+    (buffer-entry-insert entry sql t t)))
+
+
 ;; creates interactive function `icsql-new' etc
 (buffer-manager-create-interactive-functions
  icsql-manager-singleton 'icsql-manager-singleton)
 
 (define-minor-mode icsql-mode
   "Toggle icSQL mode."
-  :keymap '(("\C-x\C-e" . icsql-send-line))
+  :keymap '(("\C-x\C-e" . icsql-send-line)
+	    ("\C-x\C-w" . icsql-send-inpu))
   :group 'icsql)
 
 (add-hook 'sql-mode-hook 'icsql-mode)
