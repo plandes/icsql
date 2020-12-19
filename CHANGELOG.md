@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Compat with recent *flycheck* and `package-lint`.
 - Updated dependencies.
 - Switched from Travis to GitHub workflows.
+- Switched to conforming tag versions to other Zensols Emacs repos.
 
 ## Added
 - User input sends SQL to buffer via `buffer-manager` framework.
