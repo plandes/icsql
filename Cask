@@ -1,6 +1,5 @@
 ;; -*- emacs-lisp -*-
 (source gnu)
-(source melpa)
 (source melpa-stable)
 
 (depends-on "dash" "2.17.0")

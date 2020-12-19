@@ -87,12 +87,10 @@ GNU Lesser General Public License, Version 2.0
 [melpa-stable-link]: https://stable.melpa.org/#/icsql
 [melpa-badge]: https://melpa.org/packages/icsql-badge.svg
 [melpa-stable-badge]: https://stable.melpa.org/packages/icsql-badge.svg
-[travis-link]: https://travis-ci.org/plandes/icsql
-[travis-badge]: https://travis-ci.org/plandes/icsql.svg?branch=master
+[build-badge]: https://github.com/plandes/icsql/workflows/CI/badge.svg
+[build-link]: https://github.com/plandes/icsql/actions
 
 [Emacs SQL mode]: https://www.emacswiki.org/emacs/SqlMode
 [ciSQL]: https://github.com/plandes/cisql
 [buffer manage]: https://github.com/plandes/buffer-manage
 [connecting to a database]: https://github.com/plandes/cisql#connecting-to-a-database
-[build-badge]: https://github.com/plandes/icsql/workflows/CI/badge.svg
-[build-link]: https://github.com/plandes/icsql/actions
