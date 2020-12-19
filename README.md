@@ -2,7 +2,8 @@
 
 [![MELPA badge][melpa-badge]][melpa-link]
 [![MELPA stable badge][melpa-stable-badge]][melpa-stable-link]
-[![Travis CI Build Status][travis-badge]][travis-link]
+[![Build Status][build-badge]][build-link]
+
 
 This library provides an [Emacs SQL mode] integration to the [ciSQL] program.
 In addition it provides support for multiple buffers and fast/easy buffer (for
@@ -75,7 +76,7 @@ using the following `icsql-help-command-line`.
 
 ## License
 
-Copyright © 2018-2019 Paul Landes
+Copyright © 2018 - 2020 Paul Landes
 
 GNU Lesser General Public License, Version 2.0
 
@@ -93,3 +94,5 @@ GNU Lesser General Public License, Version 2.0
 [ciSQL]: https://github.com/plandes/cisql
 [buffer manage]: https://github.com/plandes/buffer-manage
 [connecting to a database]: https://github.com/plandes/cisql#connecting-to-a-database
+[build-badge]: https://github.com/plandes/icsql/workflows/CI/badge.svg
+[build-link]: https://github.com/plandes/icsql/actions

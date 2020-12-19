@@ -1,13 +1,13 @@
-;;; icsql.el --- Interactive iSQL iteraface to ciSQL. -*- lexical-binding: t; -*-
+;;; icsql.el --- Interactive iSQL iteraface to ciSQL  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2018-2019 Paul Landes
+;; Copyright (C) 2018 - 2020 Paul Landes
 
-;; Version: 0.1
+;; Version: 0.2
 ;; Author: Paul Landes
 ;; Maintainer: Paul Landes
 ;; Keywords: isql sql rdbms data
 ;; URL: https://github.com/plandes/icsql
-;; Package-Requires: ((emacs "26") (choice-program "0.8") (buffer-manage "0.10"))
+;; Package-Requires: ((emacs "26") (choice-program "0.13") (buffer-manage "0.11"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -301,7 +301,7 @@ Model the ciSQL product after PRODUCT (ex: 'mysql)."
   "Interactively read an SQL connection profile from the user."
   (let* ((default (or (car icsql-read-connection-history)
 		      icsql-none-connection))
-	 (prompt (choice-program-default-prompt "DB Connection" default))
+	 (prompt (choice-program-complete-default-prompt "DB Connection" default))
 	 (ui (choice-program-complete
 	      prompt (cons icsql-none-connection
 			   (mapcar 'car icsql-connections))

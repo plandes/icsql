@@ -3,14 +3,14 @@
 (source melpa)
 (source melpa-stable)
 
-(depends-on "dash" "2.13.0")
-(depends-on "buffer-manage" "0.10")
-(depends-on "choice-program" "0.5")
-(depends-on "package-lint")
+(depends-on "dash" "2.17.0")
+(depends-on "choice-program" "0.13")
+(depends-on "buffer-manage" "0.11")
 
 (package-file "icsql.el")
 
 (files "*.el" "doc/*.texi" (:exclude ".dir-locals.el"))
 
 (development
+ (depends-on "package-lint")
  (depends-on "ert-runner"))
