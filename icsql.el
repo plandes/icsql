@@ -107,7 +107,7 @@ See `icsql-download-jar'."
   :type 'directory
   :group 'icsql)
 
-(defcustom icsql-sql-cisql-version "0.0.19"
+(defcustom icsql-sql-cisql-version "0.0.20"
   "*The version of the cisql uberjar to use."
   :type 'string
   :group 'icsql)
@@ -319,6 +319,7 @@ Model the ciSQL product after PRODUCT (ex: 'mysql)."
 An icSQL entry class that represents each SQL interactive buffer.")
 
 (cl-defmethod buffer-entry-create-buffer ((this icsql-entry))
+  "Create an SQL buffer for THIS isql entry."
   (with-slots (name conn-name) this
     (let* ((conn-none-p (equal conn-name icsql-none-connection))
 	   (conn (if conn-none-p
@@ -338,7 +339,7 @@ An icSQL entry class that represents each SQL interactive buffer.")
 	  buf)))))
 
 (cl-defmethod buffer-entry-set-sqli-buffer ((this icsql-entry))
-  "Set the Emacs SQL library SQLi buffer to this icSQL entry."
+  "Set the Emacs SQL library SQLi buffer to THIS icSQL entry."
   (let ((buf (buffer-entry-buffer this)))
     (setq sql-buffer buf)))
 
@@ -350,15 +351,19 @@ An icSQL entry class that represents each SQL interactive buffer.")
 		   :type (or null string)
 		   :documentation "Name of the connection")))
 
-(cl-defmethod config-manager-entry-default-name ((_ icsql-manager))
+(cl-defmethod config-manager-entry-default-name ((this icsql-manager))
+  "Return the default name for THIS entry."
+  (ignore this)
   "icsql")
 
 (cl-defmethod config-manager-new-entry ((this icsql-manager) &optional slots)
+  "Create a new SQL buffer for THIS entry using SLOTS data."
   (with-slots (last-conn-name) this
     (apply #'icsql-entry
 	   (append slots (list :conn-name last-conn-name)))))
 
 (cl-defmethod config-manager-read-new-name ((this icsql-manager) &rest _)
+  "Read a new SQL buffer name from the user for THIS manager."
   (let ((name (icsql-read-connection)))
     (oset this :last-conn-name name)
     (format "icsql-%s" name)))
