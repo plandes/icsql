@@ -1,6 +1,6 @@
 ;;; icsql.el --- Interactive iSQL iteraface to ciSQL  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2018 - 2020 Paul Landes
+;; Copyright (C) 2018 - 2021 Paul Landes
 
 ;; Version: 0.3
 ;; Author: Paul Landes
