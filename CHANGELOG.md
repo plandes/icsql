@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 
+## [0.0.3] - 2021-01-14
 ### Changed
 - Drop the `-none` at the end of entry buffer names.
 - Version bump for [ciSQL] REPL upgrade.
@@ -40,7 +41,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 <!-- links -->
-[Unreleased]: https://github.com/plandes/icsql/current/v0.0.2...HEAD
+[Unreleased]: https://github.com/plandes/icsql/current/v0.0.3...HEAD
+[0.0.3]: https://github.com/plandes/icsql/current/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/plandes/icsql/current/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/plandes/icsql/current/vc9545c1e6e09961519cfbe2cfec0fb21ffa16c37...v0.0.1
 
