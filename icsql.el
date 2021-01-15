@@ -2,12 +2,12 @@
 
 ;; Copyright (C) 2018 - 2020 Paul Landes
 
-;; Version: 0.2
+;; Version: 0.3
 ;; Author: Paul Landes
 ;; Maintainer: Paul Landes
 ;; Keywords: isql sql rdbms data
 ;; URL: https://github.com/plandes/icsql
-;; Package-Requires: ((emacs "26") (choice-program "0.13") (buffer-manage "0.11"))
+;; Package-Requires: ((emacs "26") (choice-program "0.13") (buffer-manage "0.12"))
 
 ;; This file is not part of GNU Emacs.
 
