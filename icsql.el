@@ -366,7 +366,9 @@ An icSQL entry class that represents each SQL interactive buffer.")
   "Read a new SQL buffer name from the user for THIS manager."
   (let ((name (icsql-read-connection)))
     (oset this :last-conn-name name)
-    (format "icsql-%s" name)))
+    (if (equal name icsql-none-connection)
+	"icsql"
+      (format "icsql-%s" name))))
 
 
 (defcustom icsql-manager-singleton
