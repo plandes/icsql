@@ -320,7 +320,7 @@ An icSQL entry class that represents each SQL interactive buffer.")
 
 (cl-defmethod buffer-entry-create-buffer ((this icsql-entry))
   "Create an SQL buffer for THIS isql entry."
-  (with-slots (name conn-name) this
+  (with-slots (object-name conn-name) this
     (let* ((conn-none-p (equal conn-name icsql-none-connection))
 	   (conn (if conn-none-p
 		     "ansi"
@@ -330,7 +330,7 @@ An icSQL entry class that represents each SQL interactive buffer.")
 		      (icsql-conn-field 'product conn)))
 	   (sql-buf-name "icsql-buf"))
       (if (null product)
-	  (error "No product defined for %s" name)
+	  (error "No product defined for %s" object-name)
 	(icsql-repopulate-sql-product-alist product)
 	(sql-product-interactive 'icsql sql-buf-name))
       (let ((buf (get-buffer "*SQL*")))
