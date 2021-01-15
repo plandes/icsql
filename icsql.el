@@ -190,13 +190,11 @@ directories when storing the file."
 
 (defun icsql-connection (name)
   "Get connection by NAME."
-  (dolist (conn icsql-connections)
-    (if (equal name (nth (cl-position 'name icsql-fields) conn))
-	(cl-return
-	 (let ((i -1))
-	   (mapcar (lambda (arg)
-		     (cons (nth (cl-incf i) icsql-fields) arg))
-		   conn))))))
+  (->> icsql-connections
+       (-some #'(lambda (conn)
+		  (let ((cname (nth (cl-position 'name icsql-fields) conn)))
+		    (and (equal cname name) conn))))
+       (-zip icsql-fields)))
 
 (defun icsql-compose-command (conn leinp)
   "Compose the cisql command line to start interactively.
