@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 
+### Changed
+- Drop the `-none` at the end of entry buffer names.
+- Version bump for [ciSQL] REPL upgrade.
+- More per spec doc.
+
+
 ## [0.0.2] - 2020-12-18
 ### Changed
 - Upgraded to Emacs [zenbuild].
