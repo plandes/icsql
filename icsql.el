@@ -36,6 +36,7 @@
 (require 'eieio)
 (require 'sql)
 (require 'dash)
+(require 'json)
 (require 'choice-program-complete)
 (require 'buffer-manage)
 
@@ -45,39 +46,67 @@
 
 (defcustom icsql-connections nil
   "*The method of connecting.
-Cisql can either connect via JNDI or the old DriverManager using a connection
-string and driver combination.  If using the JNDI method, the following fields
-are used:
-  - JNDI \(ex: jdbc.devDS)
-  - Provider URL \(ex: t3://localhost:7001)
-  - Initial Context Factory \(ex: weblogic.jndi.WLInitialContextFactory)
 
-For the driver manager method, the following are used:
-  - Driver \(class name i.e. com.sybase.jdbc2.jdbc.SybDriver)
-  - Connection String \(ex: jdbc:sybase:Tds:<DBNAME>:<PORT>[/DB])"
+Each entry has the following fields:
+  * Name: the human readable name (i.e. `payroll-db').
+
+  * Product: the JDBC driver name (i.e. `mysql', `sqlite').  Available drivers
+    are given by the `listdrv' in `cisql'.
+
+  * Host: the host with which to connect (i.e. `db1.example.com').
+
+  * Port: the port with which to connect (i.e. `3306')
+
+  * Database: the name of the database (file name if SQLite) (i.e. `payroll').
+
+  * User: the user name with which to connect.
+
+  * Password: the user password.
+
+  * Configuration: key/values given as the `--config' parameter to `cisql'.
+
+If the field does not apply, leave it empty, which are not given to the `cisql'
+inferior program."
   :type '(repeat
-	  (list
-	   (string :tag "Name")
-	   (symbol :tag "Product")
-	   (string :tag "Host")
-	   (string :tag "Database")
-	   (string :tag "User")
-	   (string :tag "Password")
-	   (repeat :tag "Configuration"
-		   (cons :tag "Variable Settings" string string ))))
+	  (list (string :tag "Name")
+		(symbol :tag "Product")
+		(string :tag "Host")
+		(string :tag "Port")
+		(string :tag "Database")
+		(string :tag "User")
+		(string :tag "Password")
+		(repeat :tag "Configuration"
+			(cons :tag "Variable Settings" string string ))))
   :group 'icsql)
 
 (defconst icsql-fields
   '(name
     product
     host
+    port
     database
     user
     password
     configuration)
-  "Fields (keys) in `icsql-connections.")
+  "Fields (keys) in `icsql-connections'.
+See `icsql-connections' for more information).")
 
-(defconst icsql-none-connection "none")
+(defcustom icsql-connections-supplemental nil
+  "A file of additional connections in addition to `icsql-connections'.
+When the file exists at the time of prompting the user for input, it is read
+and new connections.  The file must contain an array of dict entries, each of
+which are the same key/values as `icsql-connections'.
+
+Providing a means of using a separate file is useful when you want to store
+secure logins with passwords on an encrpyted drive.  This is the reason the
+file is accessed for each new `icsql' connection."
+  :type '(choice :tag "Additional connections"
+		 (const :tag "None" nil)
+		 (file :tag "File"))
+  :group 'icsql)
+
+(defconst icsql-none-connection "none"
+  "The string used when prompting for no predefined connection.")
 
 (defcustom icsql-separator-char ";"
   "*The deliminator for SQL statements."
@@ -188,9 +217,28 @@ directories when storing the file."
   (let ((idx (cl-position name icsql-fields)))
     (cdr (nth idx conn))))
 
+(defun icsql-connections-compile ()
+  "Return all icsql connections."
+  (when (and icsql-connections-supplemental
+	     (file-exists-p icsql-connections-supplemental))
+    (->> (json-read-file icsql-connections-supplemental)
+	 (-map (lambda (kvs)
+		 (-map (lambda (kv)
+			 (let ((pos (cl-position (car kv) icsql-fields)))
+			   (cons pos (cdr kv))))
+		       kvs)))
+	 (-map (lambda (kvs)
+		 (-map (lambda (i)
+			 (let ((val (cdr (assq i kvs))))
+			   (if (= 1 i)
+			       (intern val)
+			     val)))
+		       (number-sequence 0 (1- (length icsql-fields))))))
+	 (append icsql-connections))))
+
 (defun icsql-connection (name)
   "Get connection by NAME."
-  (->> icsql-connections
+  (->> (icsql-connections-compile)
        (-some #'(lambda (conn)
 		  (let ((cname (nth (cl-position 'name icsql-fields) conn)))
 		    (and (equal cname name) conn))))
@@ -216,6 +264,7 @@ LEINP if non-nil start using a lein run command."
 		     (->> prod-name symbol-name (list "--name"))))
 	   (options (append name
 			    (fl "--host" 'host)
+			    (fl "--port" 'port)
 			    (fl "--database" 'database)
 			    (fl "--user" 'user)
 			    (fl "--password" 'password)
@@ -300,9 +349,10 @@ Model the ciSQL product after PRODUCT (ex: 'mysql)."
   (let* ((default (or (car icsql-read-connection-history)
 		      icsql-none-connection))
 	 (prompt (choice-program-complete-default-prompt "DB Connection" default))
+	 (cons (icsql-connections-compile))
 	 (ui (choice-program-complete
 	      prompt (cons icsql-none-connection
-			   (mapcar 'car icsql-connections))
+			   (mapcar 'car cons))
 	      t t nil 'icsql-read-connection-history
 	      default)))
     (setq icsql-last-read ui)))

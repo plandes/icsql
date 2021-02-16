@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- A new method to read connections from a file, which can be used store secure
+  logins, with customized variable `icsql-connections-supplemental`.
+### Changed
+- Added a port to the list of entries `icsql-connections`.  If you use this
+  configuration, you'll need to a `nil` in the fourth location in your
+  customize database.  Or you'll need to remove it and re-add it.
+
 
 ## [0.0.3] - 2021-01-14
 ### Changed
