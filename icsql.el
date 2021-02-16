@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2018 - 2021 Paul Landes
 
-;; Version: 0.3
+;; Version: 0.4
 ;; Author: Paul Landes
 ;; Maintainer: Paul Landes
 ;; Keywords: isql sql rdbms data

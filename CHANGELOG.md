@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+
+## [0.0.4] - 2021-02-16
 ### Added
 - A new method to read connections from a file, which can be used store secure
   logins, with customized variable `icsql-connections-supplemental`.
@@ -49,7 +51,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 <!-- links -->
-[Unreleased]: https://github.com/plandes/icsql/current/v0.0.3...HEAD
+[Unreleased]: https://github.com/plandes/icsql/current/v0.0.4...HEAD
+[0.0.4]: https://github.com/plandes/icsql/current/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/plandes/icsql/current/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/plandes/icsql/current/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/plandes/icsql/current/vc9545c1e6e09961519cfbe2cfec0fb21ffa16c37...v0.0.1
