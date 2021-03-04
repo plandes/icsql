@@ -222,6 +222,10 @@ directories when storing the file."
   (when (and icsql-connections-supplemental
 	     (file-exists-p icsql-connections-supplemental))
     (->> (json-read-file icsql-connections-supplemental)
+	 ((lambda (elt)
+	    (if (vectorp elt)
+		(list (aref elt 0))
+	      (list elt))))
 	 (-map (lambda (kvs)
 		 (-map (lambda (kv)
 			 (let ((pos (cl-position (car kv) icsql-fields)))
