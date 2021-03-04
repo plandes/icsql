@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 
+## [0.0.5] - 2021-03-03
+### Changed
+- Handle single JSON `icsql-connections-supplemental` entry.
+
+
 ## [0.0.4] - 2021-02-16
 ### Added
 - A new method to read connections from a file, which can be used store secure
@@ -51,7 +56,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 <!-- links -->
-[Unreleased]: https://github.com/plandes/icsql/current/v0.0.4...HEAD
+[Unreleased]: https://github.com/plandes/icsql/current/v0.0.5...HEAD
+[0.0.5]: https://github.com/plandes/icsql/current/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/plandes/icsql/current/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/plandes/icsql/current/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/plandes/icsql/current/v0.0.1...v0.0.2
