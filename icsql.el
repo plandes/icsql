@@ -136,7 +136,7 @@ See `icsql-download-jar'."
   :type 'directory
   :group 'icsql)
 
-(defcustom icsql-sql-cisql-version "0.0.20"
+(defcustom icsql-sql-cisql-version "0.0.21"
   "*The version of the cisql uberjar to use."
   :type 'string
   :group 'icsql)
