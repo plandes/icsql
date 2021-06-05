@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 
+## [0.0.7] - 2021-06-05
+### Changed
+- Version bump to cisql 0.0.22.
+
+
 ## [0.0.6] - 2021-03-04
 ### Changed
 - Fix connection prompt when missing supplemental connections.
@@ -61,7 +66,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 <!-- links -->
-[Unreleased]: https://github.com/plandes/icsql/current/v0.0.6...HEAD
+[Unreleased]: https://github.com/plandes/icsql/current/v0.0.7...HEAD
+[0.0.7]: https://github.com/plandes/icsql/current/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/plandes/icsql/current/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/plandes/icsql/current/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/plandes/icsql/current/v0.0.3...v0.0.4
