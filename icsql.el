@@ -385,7 +385,10 @@ An icSQL entry class that represents each SQL interactive buffer.")
       (if (null product)
 	  (error "No product defined for %s" object-name)
 	(icsql-repopulate-sql-product-alist product)
-	(sql-product-interactive 'icsql sql-buf-name))
+	;; the sql library seems to get confused when already in an SQL buffer
+	;; when `sql-product-interactive' is called
+	(with-temp-buffer
+	  (sql-product-interactive 'icsql sql-buf-name)))
       (let ((buf (get-buffer "*SQL*")))
 	(with-current-buffer buf
 	  (setq sql-product 'icsql sql-buffer buf)
