@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [Unreleased]
+### Changed
+- Bug fix for SQL entry creation while in SQL bufferes.
 
 
 ## [0.0.7] - 2021-06-05
