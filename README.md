@@ -76,7 +76,7 @@ using the following `icsql-help-command-line`.
 
 ## License
 
-Copyright © 2018 - 2020 Paul Landes
+Copyright © 2018 - 2021 Paul Landes
 
 GNU Lesser General Public License, Version 2.0
 
