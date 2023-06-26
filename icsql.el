@@ -224,7 +224,7 @@ directories when storing the file."
       (->> (json-read-file icsql-connections-supplemental)
 	   (funcall (lambda (elt)
 		      (if (vectorp elt)
-			  (list (aref elt 0))
+			  (append elt nil)
 			(list elt))))
 	   (-map (lambda (kvs)
 		   (-map (lambda (kv)
