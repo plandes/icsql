@@ -481,7 +481,7 @@ See `sql-set-sqli-buffer'."
 (define-minor-mode icsql-mode
   "Toggle icSQL mode."
   :keymap '(("\C-x\C-e" . icsql-send-line)
-	        ("\C-x\C-w" . icsql-send-input))
+	    ("\C-x\C-w" . icsql-send-input))
   :group 'icsql)
 
 (add-hook 'sql-mode-hook 'icsql-mode)
