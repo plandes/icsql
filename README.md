@@ -59,6 +59,18 @@ default value if there is no meaningful value.  The fields are:
 
 See the documentation in [connecting to a database] to specifics on each field.
 
+An example entry for a [PostgreSQL] follows:
+```bluespec
+Name: any-identifier
+Product: postgres
+Host: localhost
+Port: 5432
+Database: mycooldb
+User: joebob
+Password: <some password>
+```
+
+
 ### Product
 
 For more information on Emacs SQL products see the `sql-product-alist`
@@ -94,3 +106,4 @@ GNU Lesser General Public License, Version 2.0
 [ciSQL]: https://github.com/plandes/cisql
 [buffer manage]: https://github.com/plandes/buffer-manage
 [connecting to a database]: https://github.com/plandes/cisql#connecting-to-a-database
+[PostgreSQL]: https://www.postgresql.org
