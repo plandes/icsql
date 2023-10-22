@@ -80,7 +80,6 @@ well:
 ```
 
 
-
 ### Product
 
 For more information on Emacs SQL products see the `sql-product-alist`
