@@ -60,7 +60,7 @@ default value if there is no meaningful value.  The fields are:
 See the documentation in [connecting to a database] to specifics on each field.
 
 An example entry for a [PostgreSQL] follows using
-`M-x customize-variable icsql-connections` follows:
+`M-x customize-variable RET icsql-connections` follows:
 ```bluespec
 Name: my-postgres-entry
 Product: postgres
@@ -76,7 +76,7 @@ well:
 ```lisp
 (setq icsql-connections
       '(("my-sqlite-entry" slite "" "" "/path/to/db.sqlite3" "" "" nil)
-	("my-postgres-entry" postgres "localhost" "5432" "mycooldb" "joebob" "some password" nil)))
+        ("my-postgres-entry" postgres "localhost" "5432" "mycooldb" "joebob" "some password" nil)))
 ```
 
 
