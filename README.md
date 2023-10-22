@@ -59,9 +59,10 @@ default value if there is no meaningful value.  The fields are:
 
 See the documentation in [connecting to a database] to specifics on each field.
 
-An example entry for a [PostgreSQL] follows:
+An example entry for a [PostgreSQL] follows using
+`M-x customize-variable icsql-connection` follows:
 ```bluespec
-Name: any-identifier
+Name: my-postgres-entry
 Product: postgres
 Host: localhost
 Port: 5432
@@ -69,6 +70,15 @@ Database: mycooldb
 User: joebob
 Password: <some password>
 ```
+
+This entry, and an example SQLite entry can be set in the `~/.emacs` file as
+well:
+```lisp
+(setq icsql-connections
+      '(("my-sqlite-entry" slite "" "" "/path/to/db.sqlite3" "" "" nil)
+	("my-postgres-entry" postgres "localhost" "5432" "mycooldb" "joebob" "some password" nil)))
+```
+
 
 
 ### Product
