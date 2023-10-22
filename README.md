@@ -60,7 +60,7 @@ default value if there is no meaningful value.  The fields are:
 See the documentation in [connecting to a database] to specifics on each field.
 
 An example entry for a [PostgreSQL] follows using
-`M-x customize-variable icsql-connection` follows:
+`M-x customize-variable icsql-connections` follows:
 ```bluespec
 Name: my-postgres-entry
 Product: postgres
