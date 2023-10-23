@@ -28,6 +28,14 @@ an [issue](https://github.com/plandes/icsql/issues/new) and I'll prioritize it
 for anyone who wants it.
 
 
+## Installation
+
+The package is available from [Melpa], and the preferred way is to installed
+using the standard Emacs `M-x install-package` method.  [Java 8] also must be
+installed and used in the configuration by setting the environment variable
+`JAVA_HOME`.
+
+
 ## Usage
 
 1. Copy [icsql.el](icsql.el) to your `~/.emacs.d` directory (or whever you keep
@@ -116,3 +124,4 @@ GNU Lesser General Public License, Version 2.0
 [buffer manage]: https://github.com/plandes/buffer-manage
 [connecting to a database]: https://github.com/plandes/cisql#connecting-to-a-database
 [PostgreSQL]: https://www.postgresql.org
+[Java 8]: https://www.java.com/en/download/help/java8.html
