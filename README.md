@@ -103,6 +103,11 @@ You can get command line help to the subordinate command line program [ciSQL]
 using the following `icsql-help-command-line`.
 
 
+## Known Issues
+
+See [cisql](https://github.com/plandes/cisql#known-issues).
+
+
 ## License
 
 Copyright © 2018 - 2021 Paul Landes
