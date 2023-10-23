@@ -105,7 +105,7 @@ using the following `icsql-help-command-line`.
 
 ## Known Issues
 
-See [cisql](https://github.com/plandes/cisql#known-issues).
+See [cisql](https://github.com/plandes/cisql#known-issues) known issues.
 
 
 ## License
